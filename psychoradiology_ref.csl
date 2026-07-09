@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" default-locale="en-US">
   <info>
-    <title>Psychoradiology</title>
-    <id>http://www.zotero.org/styles/psychoradiology</id>
-    <link href="http://www.zotero.org/styles/psychoradiology" rel="self"/>
+    <title>Psychoradiology Mendeley</title>
+    <id>http://www.zotero.org/styles/psychoradiology-mendeley</id>
+    <link href="http://www.zotero.org/styles/psychoradiology-mendeley" rel="self"/>
     <link href="https://academic.oup.com/psyrad/pages/general-instructions" rel="documentation"/>
     <category citation-format="author-date"/>
     <category field="medicine"/>
@@ -16,10 +16,9 @@
     <style-options initialize-with-hyphen="false"/>
   </locale>
 
-  <!-- Journal-style author names: Li J, Chen H, Fan F, et al. -->
   <macro name="author-journal">
-    <names variable="author" et-al-min="4" et-al-use-first="3">
-      <name initialize-with="" name-as-sort-order="all" sort-separator=" " delimiter=", "/>
+    <names variable="author">
+      <name initialize-with="" name-as-sort-order="all" sort-separator=" " delimiter=", " et-al-min="4" et-al-use-first="3" delimiter-precedes-et-al="always"/>
       <label form="short" prefix=" (" suffix=")"/>
       <substitute>
         <names variable="editor"/>
@@ -28,10 +27,9 @@
     </names>
   </macro>
 
-  <!-- Book-style author names: Gesteland, R.F., Cech, T.R., and Atkins, J.F. -->
   <macro name="author-book">
-    <names variable="author" et-al-min="4" et-al-use-first="3">
-      <name and="text" initialize-with="." name-as-sort-order="all" sort-separator=", " delimiter=", " delimiter-precedes-last="always"/>
+    <names variable="author">
+      <name and="text" initialize-with="." name-as-sort-order="all" sort-separator=", " delimiter=", " delimiter-precedes-last="always" et-al-min="4" et-al-use-first="3" delimiter-precedes-et-al="always"/>
       <label form="short" prefix=" (" suffix=")"/>
       <substitute>
         <names variable="editor"/>
@@ -41,17 +39,17 @@
   </macro>
 
   <macro name="editor-book">
-    <names variable="editor" et-al-min="4" et-al-use-first="3">
-      <name and="text" initialize-with="." name-as-sort-order="all" sort-separator=", " delimiter=", " delimiter-precedes-last="always"/>
+    <names variable="editor">
+      <name and="text" initialize-with="." name-as-sort-order="all" sort-separator=", " delimiter=", " delimiter-precedes-last="always" et-al-min="4" et-al-use-first="3" delimiter-precedes-et-al="always"/>
     </names>
   </macro>
 
   <macro name="author-short">
-    <names variable="author" et-al-min="3" et-al-use-first="1">
-      <name form="short" and="text" delimiter=", "/>
+    <names variable="author">
+      <name form="short" and="text" delimiter=", " et-al-min="3" et-al-use-first="1"/>
       <substitute>
         <names variable="editor"/>
-        <text variable="title" form="short"/>
+        <text variable="title"/>
       </substitute>
     </names>
   </macro>
@@ -83,7 +81,7 @@
     </group>
   </macro>
 
-  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-year-suffix="true" disambiguate-add-names="true" collapse="year">
+  <citation disambiguate-add-year-suffix="true" disambiguate-add-names="true" collapse="year">
     <sort>
       <key macro="author-short"/>
       <key variable="issued"/>
@@ -103,7 +101,6 @@
     </sort>
     <layout>
       <choose>
-        <!-- Article: Li J, Chen H, Fan F, et al. (2020) Title. Transl Psychiatry 10:365. -->
         <if type="article-journal article-magazine article-newspaper" match="any">
           <group delimiter=" ">
             <text macro="author-journal"/>
@@ -119,8 +116,6 @@
           </group>
           <text value="."/>
         </if>
-
-        <!-- Chapter: Pyle, A.M., and Lambowitz, A.M. (2006). Title. In: Editors (eds). Book, 3rd edn. Place: Publisher, 469-506. -->
         <else-if type="chapter paper-conference entry-encyclopedia" match="any">
           <group delimiter=" ">
             <text macro="author-book"/>
@@ -140,8 +135,6 @@
             <text variable="page"/>
           </group>
         </else-if>
-
-        <!-- Whole book: Gesteland, R.F., Cech, T.R., and Atkins, J.F. (2006). The RNA World, 3rd edn. New York: Cold Spring Harbor Laboratory Press. -->
         <else>
           <group delimiter=" ">
             <text macro="author-book"/>
