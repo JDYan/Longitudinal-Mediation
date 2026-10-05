@@ -7,7 +7,7 @@ import time
 
 # import setting
 alpha_list = 0.01
-bootstrap_num = 500
+bootstrap_num = 1000
 list_path = r'...\Brain_environment_association\Control_association\early_development\time_all\New_data\Resample_bootstrap\bootstrap_list.mat'
 list_data = loadmat(list_path)
 list_data = list_data['bootstrap_list']
